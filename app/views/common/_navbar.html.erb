@@ -1,0 +1,14 @@
+<nav class="nav navbar-inverse">
+<div class="container-fluid">
+<div class="nav navbar-header">
+<a class="nav navbar-brand" href="/">投票版</a>
+</div>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav">
+<% if !current_user %>
+<li><%= link_to("註冊", new_user_registration_path) %></li>
+<li><%= link_to("登入", new_user_session_path) %></li>
+<% else %>
+<li class="dropdown">
+<% end %>
+
