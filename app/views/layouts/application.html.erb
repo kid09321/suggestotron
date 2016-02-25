@@ -7,11 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% flash.each do |name, msg| %>
-    <div><%= msg %></div>
-<% end %>
-
+<div class="container-fluid">
+<%= render "common/navbar"%>
+<%= notice_message %>
 <%= yield %>
-
+</div>
 </body>
 </html>

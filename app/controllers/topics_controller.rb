@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create, :upvote, :downvote]
   # GET /topics
   # GET /topics.json
   def index
@@ -63,7 +63,7 @@ class TopicsController < ApplicationController
   def upvote
     @topic = Topic.find(params[:id])
     @topic.votes.create
-    redirect_to(topics_path)
+    redirect_to topics_path, notice: "成功投票"
   end
   def downvote
     @topic = Topic.find(params[:id])
@@ -71,7 +71,7 @@ class TopicsController < ApplicationController
     @topic.votes.first.destroy if @topic.votes.first.present?
 
 
-    redirect_to(topics_path)
+    redirect_to topics_path, notice: "成功扣票"
   end
   def about
   end
